@@ -1,12 +1,24 @@
 import React from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { SectionProgressRail, type NavRailItem } from "@/components/navigation/SectionProgressRail";
 import { ResolveIQOverview } from "@/components/resolveiq/ResolveIQOverview";
-import { ResolveIQArchitectureScene } from "@/components/resolveiq/ResolveIQArchitectureScene";
+import { ResolveIQFallbackDiagram } from "@/components/resolveiq/ResolveIQFallbackDiagram";
 import { IncidentSimulationControls } from "@/components/resolveiq/IncidentSimulationControls";
 import { IncidentSimulationScene } from "@/components/resolveiq/IncidentSimulationScene";
 import { InsufficientEvidenceState } from "@/components/resolveiq/InsufficientEvidenceState";
 import { RAGVisualization } from "@/components/resolveiq/RAGVisualization";
+
+const ResolveIQArchitectureScene = dynamic(
+  () =>
+    import("@/components/resolveiq/ResolveIQArchitectureScene").then(
+      (mod) => mod.ResolveIQArchitectureScene
+    ),
+  {
+    ssr: false,
+    loading: () => <ResolveIQFallbackDiagram />,
+  }
+);
 import { RCAPanel } from "@/components/resolveiq/RCAPanel";
 import { ResolveIQStack } from "@/components/resolveiq/ResolveIQStack";
 import { ResolveIQDecisions } from "@/components/resolveiq/ResolveIQDecisions";

@@ -1,12 +1,24 @@
 import React from "react";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { SectionProgressRail, type NavRailItem } from "@/components/navigation/SectionProgressRail";
 import { CyberSentinelOverview } from "@/components/cyber-sentinel/CyberSentinelOverview";
-import { CyberSentinelArchitectureScene } from "@/components/cyber-sentinel/CyberSentinelArchitectureScene";
+import { CyberSentinelFallbackDiagram } from "@/components/cyber-sentinel/CyberSentinelFallbackDiagram";
 import { ThreatSimulationControls } from "@/components/cyber-sentinel/ThreatSimulationControls";
 import { ThreatLaneVisualization } from "@/components/cyber-sentinel/ThreatLaneVisualization";
 import { CyberSentinelStack } from "@/components/cyber-sentinel/CyberSentinelStack";
 import { CyberSentinelDecisions } from "@/components/cyber-sentinel/CyberSentinelDecisions";
+
+const CyberSentinelArchitectureScene = dynamic(
+  () =>
+    import("@/components/cyber-sentinel/CyberSentinelArchitectureScene").then(
+      (mod) => mod.CyberSentinelArchitectureScene
+    ),
+  {
+    ssr: false,
+    loading: () => <CyberSentinelFallbackDiagram />,
+  }
+);
 
 export const metadata: Metadata = {
   title: "Cyber Sentinel — Secure Real-Time Communication Platform | N V Sai Gokul",
