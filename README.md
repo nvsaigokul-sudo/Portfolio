@@ -1,6 +1,6 @@
 # N V Sai Gokul — Interactive Engineering Portfolio
 
-> **"I build intelligent, production-oriented software systems that combine backend engineering, AI, real-time processing, distributed systems, and security."**
+> **"I build intelligent, production-oriented software systems that combine backend engineering, AI, real-time processing, distributed systems, and security"**
 
 A dark-mode "engineering console" interactive portfolio website engineered strictly according to the comprehensive system specification, showcasing **ResolveIQ** (flagship incident intelligence platform) and **Cyber Sentinel** (secure real-time communication platform).
 
